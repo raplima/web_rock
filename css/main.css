@@ -1,0 +1,113 @@
+body {
+  background-color: #fefefe;
+}
+
+.header {
+    background-color: #006064;
+    height: 9vh;
+    box-sizing: border-box;
+    padding: 1vh 11px 2vh;
+}
+
+.subHeader {
+  height: 15vh;
+  box-sizing: border-box;
+  padding: 0vh 0 0vh;
+}
+
+.number {
+  display: block;
+  width: 100%;
+  border-bottom: 3px solid #ededed;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 3px;
+}
+
+.btn {
+  display: block;
+  margin: 10px auto;
+}
+
+
+h1 {
+  color: #FFF;
+  font-size: 2.0rem;
+}
+
+h2 {
+  color:#fff;
+  font-size: 22px;
+  text-align: center;
+  color: #006064;
+}
+
+.footer {
+  color: #FFF;
+  background: #00363a;
+  height: 10vh;
+  padding: 1%;
+  position: absolute;
+  bottom:0;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.dPrediction-list {
+  display: flex;
+  flex-direction: row;
+  height: 72vh;
+}
+
+
+.dPrediction-list .half {
+  width: 50%;
+  max-width: 50%;
+  min-height: 100px;
+}
+.dPrediction-list .half:first-child {
+  border-right: 1px solid #ccc;
+}
+
+
+.wrapImage{
+  width: 100%;
+  display: flex;
+}
+
+img {
+  display: inline-block;
+  margin: 0 auto !important;
+  float: none;
+  border: 1px solid #ccc;
+}
+
+
+/*FIXES*/
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+ol {
+  list-style: none;
+}
+
+li.null {
+  display: block;
+  height: 250px;
+}
+
+.empty{
+      margin: 0 auto;
+  display: block;
+  width: 400px;
+  height: 400px;
+  background: url(../images/null.png) center center no-repeat;
+}
+
+.mt-5, .my-5 {
+    margin-top: 0!important;
+}
