@@ -57,12 +57,56 @@ $("#predict-button").click(async function(){
         return b.probability-a.probability;
     }).slice(0,5);
 
-$("#prediction-list").empty();
-top5.forEach(function(p){
-    $("#prediction-list").append(`<li>${p.className}:${p.probability.toFixed(6)}</li>`);
+	$("#prediction-list").empty();
+	top5.forEach(function(p){
+		$("#prediction-list").append(`<li>${p.className}:${p.probability.toFixed(2)}</li>`);
+	});
+	
+	// update graph:
+	// set up the graph Gabriel, arruma essa porra aqui tambem
+	var datapoints = []
+	top5.forEach(function(p){
+		datapoints[p]=({label: p.className, y: p.probability.toFixed(2)})
+	});
+	console.log(datapoints)
+	var options = [{
+	  animationEnabled: true,
+	  theme: "light1",
+	  title: {
+		text: ""
+	  },
+	  axisX: {
+		interval: 0.1
+	  },
+	  axisY2: {
+		interlacedColor: "rgba(1,77,101,.2)",
+		gridColor: "rgba(1,77,101,.1)",
+		title: "Probability"
+	  },
+	  data: [{
+		type: "bar",
+		name: "companies",
+		axisYType: "secondary",
+		color: "#006064",
+		dataPoints: datapoints
+	  }]
+	}];
+	// this method take the class and options array 
+	renderCharts("charts", options);
+	
 });
 
-});
+function renderCharts(className, options) {
+  var charts = [];
+  var chartClassElements = document.getElementsByClassName(className);
+  for (var i = 0; i < chartClassElements.length; i++) {
+    charts.push(new CanvasJS.Chart(chartClassElements[i], options[i]));
+    charts[i].render();
+  }
+}
+// this method take the class and options array 
+//renderCharts("charts", options);
+
 
 
 function preprocessImage(image,modelName)
