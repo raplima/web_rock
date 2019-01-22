@@ -1,0 +1,92 @@
+<html>
+
+<head>
+  <title>Predict with tensorflowJS</title>
+
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+  <meta http-equiv="cleartype" content="on">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1" />
+  <meta name="robots" content=" index,follow" />
+  <meta name="theme-color" content="#db5945" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta property="og:type" content="video.movie" />
+  <meta property="og:url" content="http://www.imdb.com/title/tt0117500/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="http://example.com/ogp.jpg" />
+  <meta property="og:image:secure_url" content="https://secure.example.com/ogp.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="400" />
+  <meta property="og:image:height" content="300" />
+  <meta property="og:image:alt" content="A shiny red apple with a bite taken out" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="icon" href="images/book.png" type="image/png" sizes="16x16">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+  <link href="css/main.css" rel="stylesheet" media="screen" />
+</head>
+
+<body>
+  <div class="header">
+    <h1>Predict with tensorflowJS</h1>
+  </div>
+  <div class="topnav" id="myTopnav">
+    <a href="index.html">Home</a>
+    <a href="collaborate.html">Collaborate</a>
+    <a href="about.html" class="active">About</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+
+  <div class="row dPrediction-list">
+    <h2>About</h2>
+    <p>Rafael Augusto Pires de Lima<br /> <a href="mailto:raplima@gmail.com">raplima@gmail.com</a></p>
+    <p>Gabriel Augusto<br /> <a href="mailto:gab.augusto@gmail.com">gab.augusto@gmail.com</a></p>
+    <hr />
+
+    <form id="form" action="send.php" method="POST">
+      <div class="wrapForm">
+        <div class="partSquare50">
+          <input type="text" id="name" required name="name" placeholder="Name" />
+          <input type="email" id="email" required name="email" placeholder="e-mail" />
+          <input type="phone" id="phone" required name="phone" placeholder="Telephone" />
+        </div>
+        <div class="partSquare50">
+          <textarea id="msg" required placeholder="Your message goes here" name="msg"></textarea>
+        </div>
+      </div>
+
+      <div class="wrapButtonsContact">
+        <span class="messageSucess">Sucess!</span>
+        <input type="submit" onClick="ga('send', 'event', 'botao', 'click');" class="simpleButton buttonContact" value="Enviar" />
+      </div>
+    </form>
+
+  </div>
+
+  <div class="footer">
+    <p>All Rights - Reserved | Contact - <a href="mailto:raplima@gmail.com" target="_blank">raplima@gmail.com</a></p>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.14.1/dist/tf.min.js"> </script>
+  <script src="predict.js"></script>
+  <script type="text/javascript">
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+  </script>
+</body>
+
+</html>
