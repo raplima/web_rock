@@ -33,7 +33,7 @@
 
 <body>
   <div class="header">
-    <h1>Predict with tensorflowJS</h1>
+    <h1>Rock image classification</h1>
   </div>
   <div class="topnav" id="myTopnav">
     <a href="index.html">Home</a>
@@ -46,7 +46,8 @@
 
   <div class="row dPrediction-list">
     <h2>Collaborate</h2>
-    <p>here you can do stuff... stuff... stuff...</p>
+    <p>We still need more rock images to make our database more interesting. We will be happy if you have nice pictures you don't mind sharing with us!</p>
+	<p>More examples will help us create better models that can be more reliable when trying to guess what is the rock you are holding. </p>
     <div class="wrapContactElement">
     <form action="">
       <label for="name">Name</label>
@@ -55,16 +56,19 @@
       <label for="email">e-mail</label>
       <input type="text" placeholder="e-mail" required name="email" id="email">
 
-      <label for="select">Select Model</label>
-      <select id="model-selector" name="select" required id="select" class="custom-select">
+      <label for="select">Select what are the rock images you are giving us</label>
+      <select id="rock-selector" name="select" required id="select" class="custom-select">
         <option selected enabled>---</option>
-        <option>mobilenet</option>
-        <option>vgg</option>
-        <option>other</option>
+        <option>Basalt</option>
+        <option>Coquina</option>
+        <option>Garnet schist</option>
+		<option>Granite</option>
+		<option>Mica schist</option>
+		<option>other</option>
       </select>
 
       <label for="nameOther">Other?</label><br/>
-      <span>if you selected other on the menu above, please provide the name</span>
+      <span>if you selected other on the menu above, please provide the name of the rock</span>
       <input type="text" placeholder="" required name="nameOther" id="nameOther">
 
       <label for="obs">Observation:</label><br/>
@@ -83,7 +87,7 @@
   </div>
 
   <div class="footer">
-    <p>All Rights - Reserved | Contact - <a href="mailto:raplima@gmail.com" target="_blank">raplima@gmail.com</a></p>
+    <p>All Rights - Reserved | Contact - <a href="mailto:rlima@ou.edu" target="_blank">rlima@ou.edu</a></p>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
