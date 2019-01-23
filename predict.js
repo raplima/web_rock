@@ -35,7 +35,7 @@ $("#model-selector").change(function(){
 let model;
 async function loadModel(name){
     //model=await tf.loadModel('https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json');
-	console.log('passed')
+	console.log('Model loaded')
 
 	model=await tf.loadModel('http://localhost:8080/model/model.json')
     $('.progress-bar').hide();
@@ -63,11 +63,12 @@ $("#predict-button").click(async function(){
 	});
 	
 	// update graph:
-	// set up the graph Gabriel, arruma essa porra aqui tambem
-	var datapoints = []
+	// set up the graph 
+	var datapoints = [];
 	top5.forEach(function(p){
-		datapoints[p]=({label: p.className, y: p.probability.toFixed(2)})
+		datapoints.push({label: p.className, y: parseFloat(p.probability.toFixed(2))})
 	});
+
 	console.log(datapoints)
 	var options = [{
 	  animationEnabled: true,
@@ -85,10 +86,10 @@ $("#predict-button").click(async function(){
 	  },
 	  data: [{
 		type: "bar",
-		name: "companies",
+		max: 1.0,
 		axisYType: "secondary",
 		color: "#006064",
-		dataPoints: datapoints
+		dataPoints: datapoints.reverse()
 	  }]
 	}];
 	// this method take the class and options array 
