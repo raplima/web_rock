@@ -95,6 +95,27 @@ $("#predict-button").click(async function(){
 	// this method take the class and options array 
 	renderCharts("charts", options);
 	
+	
+	// maybe use this graph:
+	myX = []
+	myY = []
+	top5.forEach(function(p){
+		myX.push(parseFloat(p.probability.toFixed(2)))
+		myY.push(p.className)
+	});
+	
+	var data = [{
+		type: 'bar',
+		x: myX.reverse(),
+		y: myY.reverse(),
+		orientation: 'h',
+		marker: {
+			color: "#006064",
+			width: 1
+		}
+	}];
+	Plotly.newPlot('plotChart', data, {}, {showSendToCloud:true});
+	
 });
 
 function renderCharts(className, options) {
