@@ -33,7 +33,7 @@
 
 <body>
   <div class="header">
-    <h1>Predict with tensorflowJS</h1>
+    <h1>Rock image classification</h1>
   </div>
   <div class="topnav" id="myTopnav">
     <a href="index.html" class="active">Home</a>
@@ -84,16 +84,24 @@
         <li class="null"><span class="empty"></span></li>
       </ol>
     </div>
+	
+	<div class="charts" style="height: 300px; width: 100%;">
+      <h2 class="ml-3">charts</h2>
+      <ol id="prediction-chart">
+        <li class="null"><span class="empty"></span></li>
+      </ol>
+    </div>
 
   </div>
   </div>
 
   <div class="footer">
-    <p>All Rights - Reserved | Contact - <a href="mailto:raplima@gmail.com" target="_blank">raplima@gmail.com</a></p>
+    <p>All Rights - Reserved | Contact - <a href="mailto:rlima@ou.edu" target="_blank">rlima@ou.edu</a></p>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.14.1/dist/tf.min.js"> </script>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
   <script src="predict.js"></script>
   <script type="text/javascript">
     function myFunction() {
