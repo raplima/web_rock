@@ -9,9 +9,12 @@ body {
 p {
     margin-top: 0;
     margin-bottom: 1rem;
-    margin: 6%;
+    margin: 0;
     box-sizing: border-box;
     width: 94%;
+}
+a {
+  cursor: pointer;
 }
 
 .header {
@@ -54,7 +57,7 @@ h2 {
   text-align: center;
   color: #006064;
   width: 100%;
-margin: 6% 0 0;
+  margin: 6% 0 0;
 }
 
 .footer {
@@ -62,23 +65,24 @@ margin: 6% 0 0;
   background: #00363a;
   height: 10vh;
   padding: 1%;
-  position: absolute;
-  bottom: 0;
+  position: relative;
+  /* bottom: 0; */
   width: 100%;
   box-sizing: border-box;
   text-align: center;
+  float: left;
 }
 
 .dPrediction-list {
   display: flex;
   flex-direction: row;
-  height: 72vh;
+  min-height: 72vh;
 }
 
 .dPrediction-list .half {
   width: 50%;
   max-width: 50%;
-  min-height: 100px;
+  min-height: 300px;
 }
 
 .dPrediction-list .half:first-child {
@@ -289,6 +293,20 @@ form span {
   margin: 5px 0 0;
 }
 
+.charts{
+  min-height: 300px;
+  background: red;
+      width: 100%;
+      display: block;
+}
+
+.plotChart{
+  min-height: 300px;
+  background: yellow;
+      width: 100%;
+      display: block;
+}
+
 @media (max-width: 865px) {
   .dPrediction-list .half {
     position: relative;
@@ -351,6 +369,13 @@ form span {
 }
 
 @media screen and (max-width: 600px) {
+
+  body {
+    background-color: #fefefe;
+    display: flex;
+    flex-direction: column;
+}
+
   .topnav a:not(:first-child) {
     display: none;
   }
