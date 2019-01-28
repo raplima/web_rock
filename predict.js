@@ -1,4 +1,4 @@
-//inspired in https://hackernoon.com/classifying-images-using-tensorflow-js-keras-58431c4df04
+// inspired in https://hackernoon.com/classifying-images-using-tensorflow-js-keras-58431c4df04
 // and files in https://github.com/ADLsourceCode/TensorflowJS
 // to set up the server: open powershell in target directory -> http-server -c --cors
 
@@ -126,9 +126,6 @@ function renderCharts(className, options) {
     charts[i].render();
   }
 }
-// this method take the class and options array 
-//renderCharts("charts", options);
-
 
 
 function preprocessImage(image,modelName)
