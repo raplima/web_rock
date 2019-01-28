@@ -56,8 +56,15 @@ h2 {
   font-size: 22px;
   text-align: center;
   color: #006064;
-  width: 100%;
+  width: 96%;
   margin: 6% 0 0;
+}
+
+.page{
+  max-width: 600px;
+  width: 90%;
+  display: block;
+  margin: 0 auto;
 }
 
 .footer {
@@ -87,6 +94,25 @@ h2 {
 
 .dPrediction-list .half:first-child {
   border-right: 1px solid #ccc;
+}
+
+.prediction-list{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+
+.prediction-list li {
+  width: 30%;
+  text-align: center;
+}
+
+@media sceen (max-width: 865px) {
+  .prediction-list li {
+    width: 100%;
+  }
 }
 
 .wrapImage {
@@ -296,15 +322,14 @@ form span {
 .charts{
   min-height: 300px;
   background: red;
-      width: 100%;
-      display: block;
+  width: 100%;
+  display: block;
 }
 
 .plotChart{
   min-height: 300px;
-  background: yellow;
-      width: 100%;
-      display: block;
+  width: 100%;
+  display: block;
 }
 
 @media (max-width: 865px) {
@@ -330,7 +355,8 @@ form span {
   .dPrediction-list {
     display: flex;
     flex-direction: row;
-    height: 120vh;
+    min-height: 120vh;
+    height: auto;
   }
 
   h1 {

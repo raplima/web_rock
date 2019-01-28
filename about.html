@@ -44,36 +44,48 @@
     </a>
   </div>
 
-  <div class="row dPrediction-list">
+  <div class="page">
     <h2>About</h2>
-    <p>Rafael Pires de Lima (Research)<br /> <a href="mailto:rlima@ou.edu">rlima@ou.edu</a></p>
-	<p>Alicia Bonar (Research)<br /> <a href="mailto:alicia.bonar@ou.edu">alicia.bonar@ou.edu</a></p>
-    <p>Gabriel Augusto (Web)<br /> <a href="mailto:gab.augusto@gmail.com">gab.augusto@gmail.com</a></p>
-	<p>AASPI website<br /> <a href="http://mcee.ou.edu/aaspi/">http://mcee.ou.edu/aaspi/</a></p>
+    <hr />
+    <p>Rafael Pires de Lima (Research): <a href="mailto:rlima@ou.edu">rlima@ou.edu</a></p>
+	  <p>Alicia Bonar (Research): <a href="mailto:alicia.bonar@ou.edu">alicia.bonar@ou.edu</a></p>
+    <p>Gabriel Augusto (Web): <a href="mailto:gab.augusto@gmail.com">gab.augusto@gmail.com</a></p>
+	  <p>AASPI website: <a href="http://mcee.ou.edu/aaspi/">mcee.ou.edu/aaspi/</a></p>
     <hr />
 
-    <form id="form" action="send.php" method="POST">
-      <div class="wrapForm">
-        <div class="partSquare50">
-          <input type="text" id="name" required name="name" placeholder="Name" />
-          <input type="email" id="email" required name="email" placeholder="e-mail" />
-          <input type="phone" id="phone" required name="phone" placeholder="Telephone" />
-        </div>
+
+    <p>We still need more rock images to make our database more interesting. We will be happy if you have nice pictures you don't mind sharing with us!</p>
+    <p>More examples will help us create better models that can be more reliable when trying to guess what is the rock you are holding. </p>
+    <hr />
+    <h2>Talk to us</h2>
+    <hr />
+    <div class="wrapContactElement">
+      <form id="form" action="send.php" method="POST">
+
+        <label for="name">Name:</label>
+        <input type="text" placeholder="Name" required name="name" id="name">
+
+        <label for="email">e-mail:</label>
+        <input type="text" placeholder="e-mail" required name="email" id="email">
+
+        <label for="obs">What you have to say:</label><br />
+
         <div class="partSquare50">
           <textarea id="msg" required placeholder="Your message goes here" name="msg"></textarea>
         </div>
-      </div>
 
-      <div class="wrapButtonsContact">
-        <span class="messageSucess">Sucess!</span>
-        <input type="submit" onClick="ga('send', 'event', 'botao', 'click');" class="simpleButton buttonContact btn btn-dark" value="Enviar" />
-      </div>
-    </form>
-
+        <div class="wrapButtonsContact">
+          <span class="messageSucess">Sucess!</span>
+          <input type="submit" onClick="ga('send', 'event', 'botao', 'click');" class="simpleButton buttonContact btn btn-dark" value="Enviar" />
+        </div>
+      </form>
+    </div>
+  </div>
   </div>
 
   <div class="footer">
-    <p>Do  you have suggestions? - <a href="mailto:rlima@ou.edu" target="_blank">rlima@ou.edu</a></p>
+    <p>All Rights - Reserved | Do  you have suggestions? Ask <a href="mailto:rlima@ou.edu" target="_blank">rlima@ou.edu</a></p>
+
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
