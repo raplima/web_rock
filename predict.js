@@ -34,6 +34,7 @@ $("#model-selector").change(function(){
 
 let model;
 async function loadModel(name){
+	
     //model=await tf.loadModel('https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json');
 	console.log('Model loaded')
 
@@ -69,7 +70,6 @@ $("#predict-button").click(async function(){
 		datapoints.push({label: p.className, y: parseFloat(p.probability.toFixed(2))})
 	});
 
-	console.log(datapoints)
 	var options = [{
 	  animationEnabled: true,
 	  theme: "light1",
