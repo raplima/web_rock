@@ -148,6 +148,12 @@ function preprocessImage(image,modelName)
         return tensor.mul(offset)
                     .expandDims();
     }
+	else if(modelName=="Xception")
+    {
+        let offset=tf.scalar( 1. / 255);
+        return tensor.mul(offset)
+                    .expandDims();
+    }
     else
     {
         throw new Error("UnKnown Model error");
