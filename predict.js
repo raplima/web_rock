@@ -34,12 +34,10 @@ $("#model-selector").change(function(){
 
 let model;
 async function loadModel(name){
-	
-    //model=await tf.loadModel('https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json');
-	console.log('Model loaded')
 
-	model=await tf.loadModel('http://localhost:8080/model/model.json')
+	model=await tf.loadModel(`http://localhost:8080/model/${name}/model.json`)
     $('.progress-bar').hide();
+	console.log('Model loaded')
 }
 
 
@@ -138,7 +136,13 @@ function preprocessImage(image,modelName)
     {
         return tensor.expandDims();
     }
-    else if(modelName=="mobilenet")
+    else if(modelName=="MobileNetV2")
+    {
+        let offset=tf.scalar( 1. / 255);
+        return tensor.mul(offset)
+                    .expandDims();
+    }
+	else if(modelName=="VGG19")
     {
         let offset=tf.scalar( 1. / 255);
         return tensor.mul(offset)
