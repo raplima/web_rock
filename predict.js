@@ -35,8 +35,9 @@ $("#model-selector").change(function(){
 
 let model;
 async function loadModel(name){
-
-	model=await tf.loadModel(`http://localhost:8080/model/${name}/model.json`)
+	
+	//model=await tf.loadModel(`http://localhost:8080/model/${name}/model.json`)
+	model=await tf.loadModel(`model/${name}/model.json`)
     $('.progress-bar').hide();
 	console.log('Model loaded')
 }
