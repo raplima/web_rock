@@ -3,11 +3,12 @@
 // to set up the server: open powershell in target directory -> http-server -c --cors
 
 const ROCK_SAMPLES_CLASSES = {
-    0: 'Basalt',
-    1: 'Coquina',
-    2: 'Garnet schist',
-    3: 'Granite',
-    4: 'Mica schist'
+	0: 'Barite rose', 
+    1: 'Basalt',
+    2: 'Coquina',
+    3: 'Garnet schist',
+    4: 'Granite',
+    5: 'Mica schist'
   };
 
 $(document).ready()
@@ -44,8 +45,9 @@ async function loadModel(name){
 $("#predict-button").click(async function(){
     let image= $('#selected-image').get(0);
     let tensor = preprocessImage(image,$("#model-selector").val());
-
+	
     let prediction = await model.predict(tensor).data();
+	
     let top5=Array.from(prediction)
                 .map(function(p,i){
     return {
@@ -128,28 +130,38 @@ function renderCharts(className, options) {
 
 function preprocessImage(image,modelName)
 {
-    let tensor=tf.fromPixels(image)
-    .resizeBilinear([224,224])
-    .toFloat();
-          
+              
     if(modelName==undefined)
-    {
+    {	
+		let tensor=tf.fromPixels(image)
+			.resizeBilinear([224,224])
+			.toFloat();
         return tensor.expandDims();
     }
     else if(modelName=="MobileNetV2")
     {
+		let tensor=tf.fromPixels(image)
+			.resizeBilinear([224,224])
+			.toFloat();
         let offset=tf.scalar( 1. / 255);
         return tensor.mul(offset)
                     .expandDims();
     }
 	else if(modelName=="VGG19")
-    {
+    {	
+		let tensor=tf.fromPixels(image)
+			.resizeBilinear([224,224])
+			.toFloat();
         let offset=tf.scalar( 1. / 255);
         return tensor.mul(offset)
                     .expandDims();
     }
-	else if(modelName=="Xception")
-    {
+	else if(modelName=="InceptionV3")
+    {   
+		let tensor=tf.fromPixels(image)
+			.resizeBilinear([299,299])
+			.toFloat();
+
         let offset=tf.scalar( 1. / 255);
         return tensor.mul(offset)
                     .expandDims();
