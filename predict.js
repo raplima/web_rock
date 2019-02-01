@@ -15,7 +15,7 @@ $(document).ready()
 {
   $('.progress-bar').hide();
 }
-$("#image-selector").change(function(){
+$("#image-selector").change(async function(){
     let reader = new FileReader();
 
     reader.onload = function(){
@@ -25,6 +25,55 @@ $("#image-selector").change(function(){
     }
     let file = $("#image-selector").prop('files')[0];
     reader.readAsDataURL(file);
+	
+	// make sure image is loaded, then predict and plot
+	reader.onloadend = async() => {
+		console.log('Image loaded')
+		
+		// predict
+		let image= $('#selected-image').get(0);
+		let tensor = preprocessImage(image,$("#model-selector").val());
+		
+		let prediction = await model.predict(tensor).data();
+		
+		let top5=Array.from(prediction)
+                .map(function(p,i){
+		return {
+			probability: p,
+			className: ROCK_SAMPLES_CLASSES[i]
+		};
+		}).sort(function(a,b){
+			return b.probability-a.probability;
+		}).slice(0,5);
+		
+		// update the list:
+		$("#prediction-list").empty();
+		top5.forEach(function(p){
+			$("#prediction-list").append(`<li>${p.className}:${p.probability.toFixed(2)}</li>`);
+		});
+		
+		// update graph:
+		myX = []
+		myY = []
+		top5.forEach(function(p){
+			myX.push(parseFloat(p.probability.toFixed(2)))
+			myY.push(p.className)
+		});
+		
+		var data = [{
+			type: 'bar',
+			x: myX.reverse(),
+			y: myY.reverse(),
+			orientation: 'h',
+			marker: {
+				color: "#006064",
+				width: 1
+			}
+		}];
+		Plotly.newPlot('plotChart', data, {}, {displayModeBar: false});
+	
+	}
+	
 });
 
 
@@ -36,98 +85,12 @@ $("#model-selector").change(function(){
 let model;
 async function loadModel(name){
 	
-	//model=await tf.loadModel(`http://localhost:8080/model/${name}/model.json`)
-	model=await tf.loadModel(`model/${name}/model.json`)
+	model=await tf.loadModel(`http://localhost:8080/model/${name}/model.json`)
+	//model=await tf.loadModel(`model/${name}/model.json`)
     $('.progress-bar').hide();
 	console.log('Model loaded')
+	
 }
-
-
-$("#predict-button").click(async function(){
-    let image= $('#selected-image').get(0);
-    let tensor = preprocessImage(image,$("#model-selector").val());
-	
-    let prediction = await model.predict(tensor).data();
-	
-    let top5=Array.from(prediction)
-                .map(function(p,i){
-    return {
-        probability: p,
-        className: ROCK_SAMPLES_CLASSES[i]
-    };
-    }).sort(function(a,b){
-        return b.probability-a.probability;
-    }).slice(0,5);
-
-	$("#prediction-list").empty();
-	top5.forEach(function(p){
-		$("#prediction-list").append(`<li>${p.className}:${p.probability.toFixed(2)}</li>`);
-	});
-	
-	// update graph:
-	// set up the graph 
-	var datapoints = [];
-	top5.forEach(function(p){
-		datapoints.push({label: p.className, y: parseFloat(p.probability.toFixed(2))})
-	});
-
-	var options = [{
-	  animationEnabled: true,
-	  theme: "light1",
-	  title: {
-		text: ""
-	  },
-	  axisX: {
-		interval: 0.1
-	  },
-	  axisY2: {
-		interlacedColor: "rgba(1,77,101,.2)",
-		gridColor: "rgba(1,77,101,.1)",
-		title: "Probability"
-	  },
-	  data: [{
-		type: "bar",
-		max: 1.0,
-		axisYType: "secondary",
-		color: "#006064",
-		dataPoints: datapoints.reverse()
-	  }]
-	}];
-	// this method take the class and options array 
-	renderCharts("charts", options);
-	
-	
-	// maybe use this graph:
-	myX = []
-	myY = []
-	top5.forEach(function(p){
-		myX.push(parseFloat(p.probability.toFixed(2)))
-		myY.push(p.className)
-	});
-	
-	var data = [{
-		type: 'bar',
-		x: myX.reverse(),
-		y: myY.reverse(),
-		orientation: 'h',
-		marker: {
-			color: "#006064",
-			width: 1
-		}
-	}];
-	Plotly.newPlot('plotChart', data, {}, {showSendToCloud:true});
-	
-});
-
-function renderCharts(className, options) {
-  var charts = [];
-  var chartClassElements = document.getElementsByClassName(className);
-  for (var i = 0; i < chartClassElements.length; i++) {
-    charts.push(new CanvasJS.Chart(chartClassElements[i], options[i]));
-    charts[i].render();
-  }
-}
-
 
 function preprocessImage(image,modelName)
 {
